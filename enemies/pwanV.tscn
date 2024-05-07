@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=3 uid="uid://dduupvjt3mpxg"]
+
+[ext_resource type="Script" path="res://enemies/pwan.gd" id="1_f6xsp"]
+[ext_resource type="PackedScene" uid="uid://124e1kd4oco1" path="res://misk/meat.tscn" id="2_wa5oe"]
+[ext_resource type="Texture2D" uid="uid://w1t8jrnr3n8a" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="3_y7l5m"]
+[ext_resource type="Script" path="res://enemies/behaviours/follow_player.gd" id="4_vmrak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se8ax"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(0, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffi7c"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(192, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8iom"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um0ih"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng4i7"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(768, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a041"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(960, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d48ko"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7qp6"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucebi"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsciy"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0rk6"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niexj"]
+atlas = ExtResource("3_y7l5m")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o2rx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se8ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffi7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8iom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um0ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng4i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a041")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d48ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7qp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucebi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsciy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0rk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niexj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wn1dr"]
+radius = 17.0
+height = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3exlg"]
+radius = 67.4759
+
+[node name="Pwan" type="CharacterBody2D" groups=["enemies", "pawn"]]
+scale = Vector2(1.24, 1.24)
+motion_mode = 1
+script = ExtResource("1_f6xsp")
+health = 6
+drop_chance = 0.5
+drop_itens = Array[PackedScene]([ExtResource("2_wa5oe")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8o2rx")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_wn1dr")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("4_vmrak")
+speed = 0.6
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="AreaOfHit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfHit"]
+shape = SubResource("CircleShape2D_3exlg")
+debug_color = Color(0.783048, 0.420331, 0.307664, 0.42)

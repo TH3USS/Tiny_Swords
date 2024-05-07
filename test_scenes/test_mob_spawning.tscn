@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cde7g4gjbyigh"]
+
+[ext_resource type="PackedScene" uid="uid://cwu4nsv25jplw" path="res://player/player.tscn" id="1_2smwr"]
+[ext_resource type="PackedScene" uid="uid://d35cr7jnjusfx" path="res://systens/mob_spawner.tscn" id="2_gjnh0"]
+[ext_resource type="PackedScene" uid="uid://qt0p8t22aq72" path="res://misk/big_skull.tscn" id="3_bylqp"]
+
+[node name="TestMobSpawning" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_2smwr")]
+position = Vector2(477, 299)
+ritual_demage = 2
+ritual_interval = 15.0
+death_prefab = ExtResource("3_bylqp")
+
+[node name="MobSpawner" parent="." instance=ExtResource("2_gjnh0")]

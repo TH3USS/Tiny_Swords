@@ -1,0 +1,141 @@
+[gd_scene load_steps=21 format=3 uid="uid://cab8hjiwrjt4k"]
+
+[ext_resource type="Script" path="res://enemies/pwan.gd" id="1_2s8mf"]
+[ext_resource type="PackedScene" uid="uid://hrnmbtnic2f7" path="res://misk/skull.tscn" id="2_ligrj"]
+[ext_resource type="PackedScene" uid="uid://124e1kd4oco1" path="res://misk/meat.tscn" id="2_mcmdh"]
+[ext_resource type="Texture2D" uid="uid://dhfo4h8w6bs6w" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Purple/Pawn_Purple.png" id="3_yeugt"]
+[ext_resource type="Script" path="res://enemies/behaviours/follow_player.gd" id="4_vhlsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asioo"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhlqg"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch4s7"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8osu"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lap0"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng5cb"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqmsk"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dagh"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8hof"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig4ov"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v530v"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d03gp"]
+atlas = ExtResource("3_yeugt")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o2rx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asioo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhlqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch4s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8osu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lap0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng5cb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqmsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dagh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8hof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig4ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v530v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d03gp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wn1dr"]
+radius = 17.0
+height = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3exlg"]
+radius = 67.4759
+
+[node name="Pwan" type="CharacterBody2D" groups=["enemies", "pawn"]]
+motion_mode = 1
+script = ExtResource("1_2s8mf")
+health = 3
+death_prefab = ExtResource("2_ligrj")
+drop_chance = 0.3
+drop_itens = Array[PackedScene]([ExtResource("2_mcmdh")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8o2rx")
+animation = &"attack"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_wn1dr")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("4_vhlsd")
+speed = 0.6
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="AreaOfHit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfHit"]
+shape = SubResource("CircleShape2D_3exlg")
+debug_color = Color(0.783048, 0.420331, 0.307664, 0.42)
