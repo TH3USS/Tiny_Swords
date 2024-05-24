@@ -63,7 +63,7 @@ height = 42.0
 [node name="Sheep" type="CharacterBody2D" groups=["enemies", "sheep"]]
 motion_mode = 1
 script = ExtResource("1_iip07")
-health = 1
+health = 2
 death_prefab = ExtResource("2_yisjp")
 drop_itens = Array[PackedScene]([ExtResource("3_5s46v")])
 

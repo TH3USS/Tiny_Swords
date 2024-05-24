@@ -6,11 +6,6 @@ extends Enemy
 
 var attacking: bool = false
 
-
-
-func _ready():
-	print("AEEEEAEEEEE") #funciona
-	
 func _process(delta):
 	hit_play(delta)
 	

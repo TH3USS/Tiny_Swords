@@ -3,19 +3,14 @@ extends Enemy
 
 @onready var animation_goblin: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_of_hit: Area2D = $AreaOfHit
+@onready var die_sound: AudioStreamPlayer = $Sounds/Die
 @onready var hit_cooldown: float = 0.0
 
 var attacking: bool = false
 
-
-
-func _ready():
-	print("AEEEEAEEEEE") #funciona
-	
 func _process(delta):
 	hit_play(delta)
 	
-
 func hit_play(delta):
 	hit_cooldown -= delta
 	if hit_cooldown > 0: 
@@ -37,4 +32,4 @@ func hit_play(delta):
 			if attacking == false:
 				animation_goblin.play("default")
 
-###### TER QUE FAZER UM SCRIPT UNICO #####
+

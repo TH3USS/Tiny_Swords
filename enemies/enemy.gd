@@ -11,14 +11,14 @@ extends Node2D
 @export var drop_chances: Array[float]
 
 @onready var damage_digit_marker = $DamageDigitMarker
-@onready var damage_digit_prefab = preload("res://misk/damage_digit.tscn")
+@onready var damage_digit_prefab = preload("res://misk/damage_digit.tscn")#transformar em um PackedScene
 
-func _ready():
-	pass
 
 func demage(amount: int) -> void:
 	health -= amount
 	print("enemy-demage:", amount, " enemy-health:", health)
+	print(amount)
+	GameMenager.demage_did = amount
 	
 	#pisca vermelho no dano
 	modulate = Color.RED
@@ -50,7 +50,10 @@ func die() -> void:
 			drop_item()
 		
 		#incremetar contador
-		GameMenager.monsters_defeated_counter += 1
+	GameMenager.monsters_defeated_counter += 1
+	GameMenager.ofensive_running = true
+	GameMenager.ofensive_kills += 1
+	GameMenager.ofensive_cooldown = 100
 		
 	queue_free()
 
@@ -83,3 +86,10 @@ func get_randon_drop_item() -> PackedScene:
 		needle += drop_chance
 	
 	return drop_itens[0]
+
+#poder de empurrão
+func push(vec: Vector2):
+	var test = position - vec
+	position = test
+
+

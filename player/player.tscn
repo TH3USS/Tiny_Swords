@@ -1,9 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwu4nsv25jplw"]
+[gd_scene load_steps=30 format=3 uid="uid://cwu4nsv25jplw"]
 
 [ext_resource type="Texture2D" uid="uid://xmnbjjvuolm4" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_iexco"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_r5cym"]
 [ext_resource type="PackedScene" uid="uid://p8wfuc1n50c7" path="res://misk/ritual.tscn" id="2_awhp5"]
 [ext_resource type="PackedScene" uid="uid://124e1kd4oco1" path="res://misk/meat.tscn" id="2_dmw7p"]
+[ext_resource type="PackedScene" uid="uid://dracm0wmm3x4m" path="res://misk/special.tscn" id="3_p8vn1"]
+[ext_resource type="AudioStream" uid="uid://ccb2mkow4cmid" path="res://addons/soundtrack/Sword Parry 1.wav" id="6_3qk8x"]
+[ext_resource type="AudioStream" uid="uid://c6vm06c78x14k" path="res://addons/soundtrack/Giant_Grunt.wav" id="7_sepe6"]
+[ext_resource type="AudioStream" uid="uid://b6l7fcsyo3jo3" path="res://addons/soundtrack/Boggart_Hya.wav" id="8_22ij6"]
+[ext_resource type="AudioStream" uid="uid://bylnwftmrgu40" path="res://addons/soundtrack/sheep-122256.mp3" id="9_6f3db"]
+[ext_resource type="AudioStream" uid="uid://tkdt3o5l1f14" path="res://addons/soundtrack/Sword Impact Hit 3.wav" id="9_7v4gw"]
+[ext_resource type="AudioStream" uid="uid://bnr6jp2fxheh3" path="res://addons/soundtrack/eating-sound-effect-36186.mp3" id="10_armyg"]
+[ext_resource type="AudioStream" uid="uid://bbqrl40fnfrow" path="res://addons/soundtrack/rapid-wind-sound-effect-1-108398.mp3" id="11_ifa61"]
+[ext_resource type="AudioStream" uid="uid://duipy364b5kp8" path="res://addons/soundtrack/running-in-grass-6237.mp3" id="12_2q25o"]
+[ext_resource type="AudioStream" uid="uid://cpxpnb4demoik" path="res://addons/soundtrack/footsteps_grass_1-6810.mp3" id="13_y1sry"]
 
 [sub_resource type="Animation" id="Animation_tab1j"]
 length = 0.001
@@ -266,6 +276,7 @@ radius = 15.0
 script = ExtResource("1_r5cym")
 ritual_demage = 10
 ritual_scene = ExtResource("2_awhp5")
+special_scene = ExtResource("3_p8vn1")
 death_prefab = ExtResource("2_dmw7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -308,3 +319,37 @@ show_percentage = false
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_nlxnc")
 debug_color = Color(0.000512785, 0.605446, 0.669466, 0.164706)
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_3qk8x")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_7v4gw")
+
+[node name="GDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_sepe6")
+
+[node name="PRDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_22ij6")
+pitch_scale = 1.63
+
+[node name="PVDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_22ij6")
+
+[node name="SDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_6f3db")
+pitch_scale = 1.35
+
+[node name="Meat" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_armyg")
+
+[node name="Dash" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_ifa61")
+
+[node name="Run" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_2q25o")
+
+[node name="Walk" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_y1sry")

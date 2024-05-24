@@ -8,6 +8,7 @@ extends CanvasLayer
 var restart_cooldown: float
 
 func _ready():
+	$Musica.play()
 	time_label.text = GameMenager.time_elapsed_string
 	monsters_label.text = str(GameMenager.monsters_defeated_counter)
 	restart_cooldown = restart_delay

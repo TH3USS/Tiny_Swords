@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dldnsxq6nqwi"
+path="res://.godot/imported/Bow Attack 2.wav-674490da60c2d5dc027f8463c5d2f924.sample"
+
+[deps]
+
+source_file="res://addons/soundtrack/Bow Attack 2.wav"
+dest_files=["res://.godot/imported/Bow Attack 2.wav-674490da60c2d5dc027f8463c5d2f924.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

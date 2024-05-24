@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://p8wfuc1n50c7"]
+[gd_scene load_steps=16 format=3 uid="uid://p8wfuc1n50c7"]
 
 [ext_resource type="Texture2D" uid="uid://bs4morjg3wq8s" path="res://addons/kenneyParticlePack/PNG (Transparent)/circle_03.png" id="1_4v8gr"]
 [ext_resource type="Script" path="res://misk/ritual.gd" id="1_f4j3f"]
 [ext_resource type="Texture2D" uid="uid://bk1lm55oluhxk" path="res://addons/kenneyParticlePack/PNG (Transparent)/light_02.png" id="2_tx4ma"]
 [ext_resource type="Texture2D" uid="uid://b3op40o6hw8sn" path="res://addons/kenneyParticlePack/PNG (Transparent)/magic_02.png" id="3_i3ml5"]
+[ext_resource type="AudioStream" uid="uid://c6vm06c78x14k" path="res://addons/soundtrack/Giant_Grunt.wav" id="5_pxdqn"]
+[ext_resource type="AudioStream" uid="uid://b6l7fcsyo3jo3" path="res://addons/soundtrack/Boggart_Hya.wav" id="6_3sfsu"]
+[ext_resource type="AudioStream" uid="uid://bylnwftmrgu40" path="res://addons/soundtrack/sheep-122256.mp3" id="7_v4ivy"]
+[ext_resource type="AudioStream" uid="uid://ckkbmbo7uni4t" path="res://addons/soundtrack/fairy_sound-6469.mp3" id="8_xgw2i"]
+[ext_resource type="AudioStream" uid="uid://c1g00dgaf7ar6" path="res://addons/soundtrack/the-magical-surprise-141291.mp3" id="9_fhf38"]
+[ext_resource type="AudioStream" uid="uid://tkdt3o5l1f14" path="res://addons/soundtrack/Sword Impact Hit 3.wav" id="10_nfcfs"]
 
 [sub_resource type="Animation" id="Animation_1x25o"]
 length = 0.001
@@ -138,9 +144,21 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.5, 1.3, 2.5, 3.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.5, 1.1, 1.7, 2.3, 2.9, 3.5, 4.2, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
+"args": [],
+"method": &"deal_demage"
+}, {
 "args": [],
 "method": &"deal_demage"
 }, {
@@ -216,3 +234,28 @@ texture = ExtResource("3_i3ml5")
 scale = Vector2(21.2848, 21.2848)
 shape = SubResource("CircleShape2D_y7muu")
 debug_color = Color(0, 0.6, 0.701961, 0.12549)
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="GDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_pxdqn")
+
+[node name="PRDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_3sfsu")
+pitch_scale = 1.63
+
+[node name="PVDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_3sfsu")
+
+[node name="SDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_v4ivy")
+pitch_scale = 1.35
+
+[node name="Ritual1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_xgw2i")
+
+[node name="Ritual2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_fhf38")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_nfcfs")

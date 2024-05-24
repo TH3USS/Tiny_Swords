@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bbr4g5fowuyc4"]
+[gd_scene load_steps=44 format=3 uid="uid://bbr4g5fowuyc4"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gjp8g"]
 [ext_resource type="PackedScene" uid="uid://cwu4nsv25jplw" path="res://player/player.tscn" id="1_rynnh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5jqan3m2kp17" path="res://UI/Game_UI.tscn" id="3_pri8n"]
 [ext_resource type="Texture2D" uid="uid://f2nyretktyxt" path="res://addons/Tiny Swords/Terrain/Water/Water.png" id="4_axge7"]
 [ext_resource type="Texture2D" uid="uid://c7vcubjkey5kn" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="4_jb34m"]
+[ext_resource type="PackedScene" uid="uid://dcpfxxfdjuu76" path="res://misk/push.tscn" id="4_ns62n"]
 [ext_resource type="Texture2D" uid="uid://dntokgevkbgm5" path="res://addons/Tiny Swords/Deco/03.png" id="4_qj138"]
 [ext_resource type="Texture2D" uid="uid://dn0p673cd3vkx" path="res://addons/Tiny Swords/Deco/04.png" id="5_wi5or"]
 [ext_resource type="Texture2D" uid="uid://cwk5t1yyv2560" path="res://addons/Tiny Swords/Deco/05.png" id="6_8pj11"]
@@ -22,6 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://dduupvjt3mpxg" path="res://enemies/pwanV.tscn" id="19_voqrv"]
 [ext_resource type="PackedScene" uid="uid://cab8hjiwrjt4k" path="res://enemies/pwanR.tscn" id="20_wgwr0"]
 [ext_resource type="PackedScene" uid="uid://dakrr2e7tqfv7" path="res://enemies/sheep.tscn" id="21_soqv0"]
+[ext_resource type="PackedScene" uid="uid://c5r5tteudon5t" path="res://misk/lightning.tscn" id="23_1ecmq"]
+[ext_resource type="AudioStream" uid="uid://bl4vvbnnbwl8l" path="res://addons/soundtrack/Plain_Sight_(Regular).wav" id="25_4p2b8"]
+[ext_resource type="AudioStream" uid="uid://c3ptsbauc4ona" path="res://addons/soundtrack/lightening-bang-impact-40580.mp3" id="26_lt70k"]
+[ext_resource type="AudioStream" uid="uid://dcydigs3tlmo" path="res://addons/soundtrack/075681_electric-shock-33018.mp3" id="27_s7xq7"]
+[ext_resource type="AudioStream" uid="uid://d5sdd1ajsjbr" path="res://addons/soundtrack/rapid-wind-sound-effect-2-108400.mp3" id="28_nwqgv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xo82"]
 texture = ExtResource("4_jb34m")
@@ -142,6 +148,8 @@ y_sort_enabled = true
 script = ExtResource("1_gjp8g")
 game_ui = NodePath("GameUI")
 game_over_ui_template = ExtResource("2_ey4ve")
+lightning_scene = ExtResource("23_1ecmq")
+pushing_scene = ExtResource("4_ns62n")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -403,3 +411,25 @@ position = Vector2(581, 354)
 creatures = Array[PackedScene]([ExtResource("18_5yccq"), ExtResource("19_voqrv"), ExtResource("20_wgwr0"), ExtResource("21_soqv0")])
 
 [node name="GameUI" parent="." instance=ExtResource("3_pri8n")]
+
+[node name="lightning" parent="." instance=ExtResource("23_1ecmq")]
+position = Vector2(967, 438)
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="musica" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("25_4p2b8")
+
+[node name="lightning1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("26_lt70k")
+pitch_scale = 1.3
+
+[node name="lightning2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("27_s7xq7")
+volume_db = -20.801
+pitch_scale = 1.3
+
+[node name="Push" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("28_nwqgv")
+volume_db = -10.785
+pitch_scale = 1.3

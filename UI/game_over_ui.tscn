@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cp8lh5qaeijtx"]
+[gd_scene load_steps=14 format=3 uid="uid://cp8lh5qaeijtx"]
 
 [ext_resource type="Texture2D" uid="uid://cprch5tf4rceh" path="res://addons/Tiny Swords/UI/Ribbons/Ribbon_Red_3Slides.png" id="1_3k06a"]
 [ext_resource type="Script" path="res://UI/game_over_ui.gd" id="1_w08g7"]
 [ext_resource type="Texture2D" uid="uid://xeedlwruegmd" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="2_oow7u"]
+[ext_resource type="AudioStream" uid="uid://b6ar0hi5wsl8t" path="res://addons/soundtrack/kl-peach-game-over-iii-142453.mp3" id="4_0ovtu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmc4f"]
 texture = ExtResource("1_3k06a")
@@ -226,3 +227,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0an7x")
 }
 autoplay = "defaut"
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0ovtu")

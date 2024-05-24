@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://c5r5tteudon5t"]
+
+[ext_resource type="Script" path="res://misk/lightning.gd" id="1_1afgt"]
+[ext_resource type="Texture2D" uid="uid://buxb0fc8hvox5" path="res://addons/kenneyParticlePack/PNG (Transparent)/light_03.png" id="1_ljlqh"]
+[ext_resource type="Texture2D" uid="uid://dfl6keomgfipp" path="res://addons/kenneyParticlePack/PNG (Transparent)/spark_04.png" id="3_3d5dj"]
+[ext_resource type="Texture2D" uid="uid://b6kj7jagc5tbm" path="res://addons/kenneyParticlePack/PNG (Transparent)/spark_03.png" id="4_trqyd"]
+[ext_resource type="Texture2D" uid="uid://q40iu8ititlw" path="res://addons/kenneyParticlePack/PNG (Transparent)/spark_06.png" id="6_3wdlj"]
+[ext_resource type="AudioStream" uid="uid://c6vm06c78x14k" path="res://addons/soundtrack/Giant_Grunt.wav" id="7_448pi"]
+[ext_resource type="AudioStream" uid="uid://b6l7fcsyo3jo3" path="res://addons/soundtrack/Boggart_Hya.wav" id="8_x3i23"]
+[ext_resource type="Texture2D" uid="uid://sy2qkpyjo2bq" path="res://addons/kenneyParticlePack/PNG (Transparent)/muzzle_05.png" id="9_jtmsg"]
+[ext_resource type="AudioStream" uid="uid://bylnwftmrgu40" path="res://addons/soundtrack/sheep-122256.mp3" id="9_mfogo"]
+[ext_resource type="AudioStream" uid="uid://tkdt3o5l1f14" path="res://addons/soundtrack/Sword Impact Hit 3.wav" id="10_6krl8"]
+
+[sub_resource type="Animation" id="Animation_wldob"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_6jcls"]
+resource_name = "raio"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Imagens/Light03:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.0023365, -0.00234795), Vector2(1.19629, 1.20215)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_demage"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mro41"]
+_data = {
+"RESET": SubResource("Animation_wldob"),
+"raio": SubResource("Animation_6jcls")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_spyyg"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xgaq"]
+
+[node name="lightning" type="Node2D"]
+modulate = Color(1, 1, 0.290196, 1)
+scale = Vector2(0.720003, 0.720003)
+script = ExtResource("1_1afgt")
+demage_amount = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mro41")
+}
+autoplay = "raio"
+
+[node name="Imagens" type="Node2D" parent="."]
+position = Vector2(0, -8.3333)
+
+[node name="Light03" type="Sprite2D" parent="Imagens"]
+material = SubResource("CanvasItemMaterial_spyyg")
+position = Vector2(-1.38888, 58.3331)
+scale = Vector2(1.19629, 1.20215)
+texture = ExtResource("1_ljlqh")
+
+[node name="Spark06" type="Sprite2D" parent="Imagens"]
+material = SubResource("CanvasItemMaterial_spyyg")
+position = Vector2(-2.77777, -448.609)
+scale = Vector2(1, 1.88888)
+texture = ExtResource("6_3wdlj")
+
+[node name="Muzzle05" type="Sprite2D" parent="Imagens"]
+material = SubResource("CanvasItemMaterial_spyyg")
+position = Vector2(-2.77777, 12.5)
+scale = Vector2(0.669254, 0.359207)
+texture = ExtResource("9_jtmsg")
+
+[node name="Spark03" type="Sprite2D" parent="Imagens"]
+material = SubResource("CanvasItemMaterial_spyyg")
+position = Vector2(118.055, 55.5553)
+rotation = 0.34856
+texture = ExtResource("4_trqyd")
+
+[node name="Spark04" type="Sprite2D" parent="Imagens"]
+material = SubResource("CanvasItemMaterial_spyyg")
+position = Vector2(-29.7762, -40.2758)
+rotation = -1.1785
+texture = ExtResource("3_3d5dj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 43.0554)
+scale = Vector2(23.7777, 23.7777)
+shape = SubResource("CircleShape2D_0xgaq")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="GDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_448pi")
+
+[node name="PRDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_x3i23")
+pitch_scale = 1.63
+
+[node name="PVDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_x3i23")
+
+[node name="SDeath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_mfogo")
+pitch_scale = 1.35
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_6krl8")

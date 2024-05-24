@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var ritual_demage: int = 1
 @export var ritual_interval: float = 30
 @export var ritual_scene: PackedScene
+@export var special_scene: PackedScene
 @export_category("Life")
 @export var health: int = 1000
 @export var max_health: int = 1000
@@ -27,12 +28,20 @@ var is_attacking: bool = false
 var attack_cooldown: float = 0.0
 var hitbox_cooldown: float = 0.0
 var ritual_cooldown: float = 0.0
+var aux: int = 0 #auxiliar para a corrida
+var aux2: int = 0 #auxiliar para o dash
+var special_cooldown: float = 10
+var ofensive_timer: int = 0
+
+
 
 signal meat_collected(valor: int)
 
 func _ready():
 	GameMenager.player = self
 	meat_collected.connect(func(valor: int): GameMenager.meat_counter += 1)
+	
+
 
 func _process(delta: float) -> void:
 	GameMenager.player_position = position
@@ -60,9 +69,21 @@ func _process(delta: float) -> void:
 	#ritual
 	update_ritual(delta)
 	
+	if Input.is_action_pressed("play_run"):
+		aux = 1
+	run(delta)
+	
+	if Input.is_action_pressed("play_dash"):
+		if aux2 == 1:
+			dash(delta)
+	
 	#atualizando health bar
 	health_progress_bar.max_value = max_health
 	health_progress_bar.value = health
+	
+	ofensive_sys(delta)
+	
+	special_sys(delta)
 
 
 
@@ -115,8 +136,14 @@ func play_run_idle_animation() -> void:
 		if was_running != is_running:
 			if is_running:
 				animation_player.play("run")
+				if aux == 1:
+					$Sounds/Run.play()
+				else:
+					$Sounds/Walk.play()
 			else:
 				animation_player.play("idle")
+				$Sounds/Run.stop()
+				$Sounds/Walk.stop()
 
 func rotate_sprite() -> void:
 	#gira sprite
@@ -126,7 +153,7 @@ func rotate_sprite() -> void:
 		sprite.flip_h = true
 
 func attack() -> void:
-	if is_attacking:
+	if is_attacking:		
 		return
 	var attack_type =  randi_range(1, 2)
 	#tocar animação
@@ -141,9 +168,8 @@ func attack() -> void:
 		elif attack_type == 2: animation_player.play("attack_side_2")
 	attack_cooldown = 0.6
 	
-	# marcar ataque
+	$Sounds/AttackSound.play()
 	is_attacking = true
-	
 
 func deal_demage_with_enemies() -> void:
 	var bodies = sword_area.get_overlapping_bodies()
@@ -159,8 +185,17 @@ func deal_demage_with_enemies() -> void:
 				attack_direction = Vector2.RIGHT
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			if dot_product >= 0.3:
+				$Sounds/HitSound.play()
 				enemy.demage(sword_demage)
-
+				if enemy.health <= 0:
+					if enemy.is_in_group("goblin"):
+						$Sounds/GDeath.play()
+					elif enemy.is_in_group("pawnR"):
+						$Sounds/PRDeath.play()
+					elif enemy.is_in_group("pawnV"):
+						$Sounds/PVDeath.play()
+					elif enemy.is_in_group("sheep"):
+						$Sounds/SDeath.play()
 
 func update_hitbox_direction(delta: float) -> void:
 	#temporizador
@@ -176,15 +211,14 @@ func update_hitbox_direction(delta: float) -> void:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
 			if body.is_in_group("goblin"):
-				print("goblin")
 				var demage_amount = 10
 				demage(demage_amount)
-			elif body.is_in_group("pawn"):
-				print("pawn")
-				var demage_amount = 5
+			elif body.is_in_group("pawnR"):
+				var demage_amount = 4
+			elif body.is_in_group("pawnV"):
+				var demage_amount = 7
 				demage(demage_amount)
 			elif body.is_in_group("sheep"):
-				print("sheep")
 				var demage_amount = 2
 				demage(demage_amount)
 			
@@ -214,7 +248,46 @@ func die() -> void:
 
 func heal(amount:int) -> int:
 	health += amount
+	$Sounds/Meat.play()
 	if health > max_health:
 		health = max_health
 	print("Recebeu cura de: ", amount, " vida total: ", health, "/", max_health)
 	return health
+
+func run(delta: float) -> void:
+	if aux == 1:
+		speed = 10
+	elif aux <= 0:
+		speed = 3
+	aux -= delta
+
+func dash(delta: float) -> void:
+	if aux2 == 1:
+		self.position += Vector2(5,5)
+		aux2 = 0
+
+
+#timer da ofensiva
+func ofensive_sys(delta: float) -> void:
+	
+	if GameMenager.ofensive_running:
+		ofensive_timer -= delta
+		if GameMenager.ofensive_cooldown > 0:
+			ofensive_timer += GameMenager.ofensive_cooldown #tiveram mais kills
+		GameMenager.ofensive_cooldown = 0
+		if ofensive_timer > 0: return
+		GameMenager.ofensive_running = false
+	elif GameMenager.ofensive_running == false:
+		GameMenager.ofensive_kills = 0
+		ofensive_timer = GameMenager.ofensive_cooldown
+
+func special_sys(delta: float) -> void:
+	if GameMenager.special_on:
+		if special_cooldown == 10:
+			var special = special_scene.instantiate()
+			add_child(special)
+		special_cooldown -= delta
+		sword_demage = 5
+		if special_cooldown > 0: return
+		GameMenager.special_on = false
+		sword_demage = 1

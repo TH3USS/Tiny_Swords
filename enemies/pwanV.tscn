@@ -109,7 +109,7 @@ height = 34.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3exlg"]
 radius = 67.4759
 
-[node name="Pwan" type="CharacterBody2D" groups=["enemies", "pawn"]]
+[node name="Pwan" type="CharacterBody2D" groups=["enemies", "pawnV"]]
 scale = Vector2(1.24, 1.24)
 motion_mode = 1
 script = ExtResource("1_f6xsp")

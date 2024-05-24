@@ -10,6 +10,14 @@ var time_elapsed: float = 0.0
 var time_elapsed_string: String
 var meat_counter: int = 0
 var monsters_defeated_counter: int = 0
+var ofensive_running: bool = false
+var ofensive_kills: int = 0
+var ofensive_cooldown: int = 0
+var l_on: bool = false #se o raio está ligado
+var p_on: bool = false #se o push está ligado
+var was_lightning: bool = false
+var special_on: bool = false
+var demage_did: int = 0
 
 var enemy_type: String
 

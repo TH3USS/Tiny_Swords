@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://xnyyn3qleqaa"]
+[gd_scene load_steps=6 format=3 uid="uid://xnyyn3qleqaa"]
 
+[ext_resource type="Script" path="res://test_scenes/test_player.gd" id="1_6fxmq"]
 [ext_resource type="Texture2D" uid="uid://xmnbjjvuolm4" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_hrx06"]
 [ext_resource type="PackedScene" uid="uid://cwu4nsv25jplw" path="res://player/player.tscn" id="2_7ausd"]
-[ext_resource type="PackedScene" uid="uid://dduupvjt3mpxg" path="res://enemies/pwanV.tscn" id="4_7ew4x"]
+[ext_resource type="PackedScene" uid="uid://c5r5tteudon5t" path="res://misk/lightning.tscn" id="3_cuvlh"]
+[ext_resource type="PackedScene" uid="uid://dakrr2e7tqfv7" path="res://enemies/sheep.tscn" id="5_420f3"]
 
 [node name="TestPlayer" type="Node2D"]
+script = ExtResource("1_6fxmq")
+object_templates = Array[PackedScene]([ExtResource("3_cuvlh")])
 
 [node name="WarriorBlue" type="Sprite2D" parent="."]
 position = Vector2(1854, 196)
@@ -92,8 +96,9 @@ scale = Vector2(3, 3)
 text = "attack_up2"
 
 [node name="Player" parent="." instance=ExtResource("2_7ausd")]
-position = Vector2(433, 345)
+position = Vector2(22, 478)
+ritual_demage = 1
 health = 100
 
-[node name="Pwan" parent="." instance=ExtResource("4_7ew4x")]
-position = Vector2(701, 354)
+[node name="Sheep" parent="." instance=ExtResource("5_420f3")]
+position = Vector2(301, 540)
