@@ -1,12 +1,131 @@
-[gd_scene load_steps=4 format=3 uid="uid://qrfint477v2d"]
+[gd_scene load_steps=22 format=3 uid="uid://qrfint477v2d"]
 
 [ext_resource type="Script" path="res://UI/Menu.gd" id="1_eucly"]
+[ext_resource type="Texture2D" uid="uid://c7vcubjkey5kn" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="2_qwxuv"]
+[ext_resource type="Texture2D" uid="uid://8hrxdgdk8vuy" path="res://addons/Tiny Swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="6_ejg2v"]
+[ext_resource type="Texture2D" uid="uid://bm5qxg1yu2pt7" path="res://addons/Tiny Swords/UI/Ribbons/Ribbon_Red_Connection_Left_Pressed.png" id="6_ks026"]
+[ext_resource type="Texture2D" uid="uid://co7i4go68c02x" path="res://addons/Tiny Swords/UI/Buttons/Button_Blue_3Slides.png" id="14_fsbob"]
+[ext_resource type="Texture2D" uid="uid://cxia72jdfpf7a" path="res://addons/Tiny Swords/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="15_d5wc7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ph7rw"]
+texture = ExtResource("2_qwxuv")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b54l2"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_ph7rw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uklv3"]
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 0.768627)
 
 [sub_resource type="SystemFont" id="SystemFont_qfuji"]
 
 [sub_resource type="Theme" id="Theme_4xpk6"]
 default_font = SubResource("SystemFont_qfuji")
 default_font_size = 42
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urdkk"]
+texture = ExtResource("14_fsbob")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 24.0
+region_rect = Rect2(8, 0, 176, 56)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abdwl"]
+texture = ExtResource("15_d5wc7")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0elq"]
+texture = ExtResource("15_d5wc7")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.529067, 0.529067, 0.529067, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ypeu"]
+texture = ExtResource("15_d5wc7")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.601223, 0.601223, 0.601223, 0.478431)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vqyt"]
+texture = ExtResource("6_ks026")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, -8, 64, 64)
+
+[sub_resource type="SystemFont" id="SystemFont_hcjcn"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnb8n"]
+font = SubResource("SystemFont_hcjcn")
+font_size = 100
+font_color = Color(0.0919593, 0.0315242, 0.0412019, 1)
+outline_size = 25
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dk082"]
+texture = ExtResource("6_ejg2v")
+texture_margin_left = 64.0
+texture_margin_top = 8.0
+texture_margin_right = 64.0
+texture_margin_bottom = 24.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 192, 64)
+
+[sub_resource type="SystemFont" id="SystemFont_723s1"]
+font_names = PackedStringArray("Colonna MT")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4mi2"]
+font = SubResource("SystemFont_723s1")
+font_size = 70
+outline_size = 15
+outline_color = Color(0.0653209, 0.0338696, 0.0338708, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -17,6 +136,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eucly")
 
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_b54l2")
+format = 2
+layer_0/name = "Agua"
+layer_0/z_index = -2
+layer_1/name = "Grama"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(-1, 65536, 1, 65535, 65536, 1, 131071, 65536, 1, 196607, 65536, 1, 262143, 65536, 1, 327679, 65536, 1, 393215, 65536, 1, 458751, 65536, 1, 524287, 65536, 1, 589823, 65536, 1, 655359, 65536, 1, 720895, 65536, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 131072, 65536, 1, 196608, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 589824, 65536, 1, 655360, 65536, 1, -65535, 65536, 1, 1, 65536, 1, 65537, 65536, 1, 131073, 65536, 1, 196609, 65536, 1, 262145, 65536, 1, 327681, 65536, 1, 393217, 65536, 1, 458753, 65536, 1, 524289, 65536, 1, 589825, 65536, 1, 655361, 65536, 1, -65534, 65536, 1, 2, 65536, 1, 65538, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, 262146, 65536, 1, 327682, 65536, 1, 393218, 65536, 1, 458754, 65536, 1, 524290, 65536, 1, 589826, 65536, 1, 655362, 65536, 1, -65533, 65536, 1, 3, 65536, 1, 65539, 65536, 1, 131075, 65536, 1, 196611, 65536, 1, 262147, 65536, 1, 327683, 65536, 1, 393219, 65536, 1, 458755, 65536, 1, 524291, 65536, 1, 589827, 65536, 1, 655363, 65536, 1, -65532, 65536, 1, 4, 65536, 1, 65540, 65536, 1, 131076, 65536, 1, 196612, 65536, 1, 262148, 65536, 1, 327684, 65536, 1, 393220, 65536, 1, 458756, 65536, 1, 524292, 65536, 1, 589828, 65536, 1, 655364, 65536, 1, -65531, 65536, 1, 5, 65536, 1, 65541, 65536, 1, 131077, 65536, 1, 196613, 65536, 1, 262149, 65536, 1, 327685, 65536, 1, 393221, 65536, 1, 458757, 65536, 1, 524293, 65536, 1, 589829, 65536, 1, 655365, 65536, 1, -65530, 65536, 1, 6, 65536, 1, 65542, 65536, 1, 131078, 65536, 1, 196614, 65536, 1, 262150, 65536, 1, 327686, 65536, 1, 393222, 65536, 1, 458758, 65536, 1, 524294, 65536, 1, 589830, 65536, 1, 655366, 65536, 1, -65529, 65536, 1, 7, 65536, 1, 65543, 65536, 1, 131079, 65536, 1, 196615, 65536, 1, 262151, 65536, 1, 327687, 65536, 1, 393223, 65536, 1, 458759, 65536, 1, 524295, 65536, 1, 589831, 65536, 1, 655367, 65536, 1, -65528, 65536, 1, 8, 65536, 1, 65544, 65536, 1, 131080, 65536, 1, 196616, 65536, 1, 262152, 65536, 1, 327688, 65536, 1, 393224, 65536, 1, 458760, 65536, 1, 524296, 65536, 1, 589832, 65536, 1, 655368, 65536, 1, -65527, 65536, 1, 9, 65536, 1, 65545, 65536, 1, 131081, 65536, 1, 196617, 65536, 1, 262153, 65536, 1, 327689, 65536, 1, 393225, 65536, 1, 458761, 65536, 1, 524297, 65536, 1, 589833, 65536, 1, 655369, 65536, 1, -65526, 65536, 1, 10, 65536, 1, 65546, 65536, 1, 131082, 65536, 1, 196618, 65536, 1, 262154, 65536, 1, 327690, 65536, 1, 393226, 65536, 1, 458762, 65536, 1, 524298, 65536, 1, 589834, 65536, 1, 655370, 65536, 1, -65525, 65536, 1, 11, 65536, 1, 65547, 65536, 1, 131083, 65536, 1, 196619, 65536, 1, 262155, 65536, 1, 327691, 65536, 1, 393227, 65536, 1, 458763, 65536, 1, 524299, 65536, 1, 589835, 65536, 1, 655371, 65536, 1, -65524, 65536, 1, 12, 65536, 1, 65548, 65536, 1, 131084, 65536, 1, 196620, 65536, 1, 262156, 65536, 1, 327692, 65536, 1, 393228, 65536, 1, 458764, 65536, 1, 524300, 65536, 1, 589836, 65536, 1, 655372, 65536, 1, -65523, 65536, 1, 13, 65536, 1, 65549, 65536, 1, 131085, 65536, 1, 196621, 65536, 1, 262157, 65536, 1, 327693, 65536, 1, 393229, 65536, 1, 458765, 65536, 1, 524301, 65536, 1, 589837, 65536, 1, 655373, 65536, 1, -65522, 65536, 1, 14, 65536, 1, 65550, 65536, 1, 131086, 65536, 1, 196622, 65536, 1, 262158, 65536, 1, 327694, 65536, 1, 393230, 65536, 1, 458766, 65536, 1, 524302, 65536, 1, 589838, 65536, 1, 655374, 65536, 1, -65521, 65536, 1, 15, 65536, 1, 65551, 65536, 1, 131087, 65536, 1, 196623, 65536, 1, 262159, 65536, 1, 327695, 65536, 1, 393231, 65536, 1, 458767, 65536, 1, 524303, 65536, 1, 589839, 65536, 1, 655375, 65536, 1, -65520, 65536, 1, 16, 65536, 1, 65552, 65536, 1, 131088, 65536, 1, 196624, 65536, 1, 262160, 65536, 1, 327696, 65536, 1, 393232, 65536, 1, 458768, 65536, 1, 524304, 65536, 1, 589840, 65536, 1, 655376, 65536, 1, -65519, 65536, 1, 17, 65536, 1, 65553, 65536, 1, 131089, 65536, 1, 196625, 65536, 1, 262161, 65536, 1, 327697, 65536, 1, 393233, 65536, 1, 458769, 65536, 1, 524305, 65536, 1, 589841, 65536, 1, 655377, 65536, 1, -65518, 65536, 1, 18, 65536, 1, 65554, 65536, 1, 131090, 65536, 1, 196626, 65536, 1, 262162, 65536, 1, 327698, 65536, 1, 393234, 65536, 1, 458770, 65536, 1, 524306, 65536, 1, 589842, 65536, 1, 655378, 65536, 1)
+layer_2/name = "Areia"
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Detalhes"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array()
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 1164.0
+offset_bottom = 660.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uklv3")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -24,28 +167,78 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -63.0
+offset_top = 6.0
+offset_right = 142.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.68, 0.68)
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_4xpk6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_urdkk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_abdwl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s0elq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2ypeu")
 text = "Start"
 
 [node name="Controls" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_4xpk6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_urdkk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_abdwl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s0elq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2ypeu")
 text = "Controls"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_4xpk6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_urdkk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_abdwl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s0elq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2ypeu")
 text = "Quit
 "
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 721.0
+offset_top = -13.0
+offset_right = 1040.0
+offset_bottom = 253.0
+rotation = 1.57242
+theme_override_styles/panel = SubResource("StyleBoxTexture_6vqyt")
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 23.3723
+offset_top = 228.962
+offset_right = 287.372
+offset_bottom = 412.962
+rotation = -1.57299
+text = "TINY"
+label_settings = SubResource("LabelSettings_gnb8n")
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 129.0
+offset_right = 761.0
+offset_bottom = 208.0
+scale = Vector2(1.28, 1.56)
+theme_override_styles/panel = SubResource("StyleBoxTexture_dk082")
+
+[node name="Label" type="Label" parent="Panel3"]
+layout_mode = 0
+offset_left = 99.2187
+offset_top = 0.641025
+offset_right = 354.219
+offset_bottom = 75.641
+text = "KNIGHT"
+label_settings = SubResource("LabelSettings_u4mi2")
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
