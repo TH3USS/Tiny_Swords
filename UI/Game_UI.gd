@@ -35,11 +35,9 @@ func _process(delta: float) -> void:
 func update_lightning(delta: float) -> void:
 	if GameMenager.was_lightning == false:
 		if GameMenager.l_on == true:
-			$Sounds/LightningClick.play()
 			btn_raio.visible = true
 			btn_raio_defaut.visible = false
 		elif GameMenager.l_on == false:
-			$Sounds/LightningClick.play()
 			btn_raio.visible = false
 			btn_raio_defaut.visible = true
 	elif GameMenager.was_lightning:
@@ -64,7 +62,6 @@ func update_lightning(delta: float) -> void:
 func update_pushing(delta: float) -> void:
 	if GameMenager.p_on:
 		if progressso2.value == 10:
-			$Sounds/PushClick.play()
 			aux2 = 0
 			progressso2.value = 0
 		#atualiza temporizador

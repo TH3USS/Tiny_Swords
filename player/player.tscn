@@ -258,7 +258,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3vl1"]
-radius = 131.548
+radius = 156.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xti3o"]
 radius = 47.0106
@@ -277,6 +277,8 @@ script = ExtResource("1_r5cym")
 ritual_demage = 10
 ritual_scene = ExtResource("2_awhp5")
 special_scene = ExtResource("3_p8vn1")
+health = 500
+max_health = 500
 death_prefab = ExtResource("2_dmw7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -293,7 +295,8 @@ libraries = {
 [node name="SwordArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
-position = Vector2(18, -33)
+position = Vector2(33, -22)
+scale = Vector2(0.800002, 1)
 shape = SubResource("CircleShape2D_b3vl1")
 debug_color = Color(0.984314, 0, 0.356863, 0.0862745)
 

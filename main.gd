@@ -33,12 +33,16 @@ func _input(event: InputEvent) -> void:
 				if GameMenager.l_on == true:
 					lightning(event.position)
 	
-	if Input.is_action_pressed("turn_lightning"):
+	if Input.is_action_pressed("turn_lightning"):		
 		if GameMenager.l_on == false: GameMenager.l_on = true
 		elif GameMenager.l_on == true: GameMenager.l_on = false
+		if GameMenager.was_lightning:
+			return
+		$Sounds/LightningClick.play()
 	
 	if Input.is_action_pressed("play_push"):
 		if GameMenager.p_on == false:
+			$Sounds/PushClick.play()
 			pushing()
 			GameMenager.p_on = true
 

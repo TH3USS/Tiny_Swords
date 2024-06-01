@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://5jqan3m2kp17"]
+[gd_scene load_steps=28 format=3 uid="uid://5jqan3m2kp17"]
 
 [ext_resource type="Script" path="res://UI/Game_UI.gd" id="1_x2gwm"]
 [ext_resource type="Texture2D" uid="uid://b3taipj6qm4py" path="res://addons/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="3_s007r"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://pyreheh05em4" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0359.png" id="8_3jkjd"]
 [ext_resource type="Texture2D" uid="uid://cw4vmg3pasd3w" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0527.png" id="8_cwcko"]
 [ext_resource type="Texture2D" uid="uid://bl22qvn2qb5ma" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0528.png" id="9_i1l1k"]
-[ext_resource type="AudioStream" uid="uid://cnb1bvjvlyqe6" path="res://addons/soundtrack/multi-pop-1-188165.mp3" id="11_2x2y5"]
-[ext_resource type="AudioStream" uid="uid://bj40p3kmb0onj" path="res://addons/soundtrack/tap-notification-180637.mp3" id="12_qt7ha"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_00pks"]
 load_path = "res://.godot/imported/Banner_Connection_Left.png-8552fe1cd41c0311b0fbdaa24d92c30d.ctex"
@@ -27,12 +25,12 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(0, 48, 160, 128)
 
-[sub_resource type="SystemFont" id="SystemFont_nxew0"]
+[sub_resource type="SystemFont" id="SystemFont_4sfoq"]
 font_names = PackedStringArray("Impact")
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccc4h"]
-font = SubResource("SystemFont_nxew0")
+font = SubResource("SystemFont_4sfoq")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 
@@ -55,6 +53,10 @@ texture_margin_bottom = 16.0
 axis_stretch_vertical = 2
 region_rect = Rect2(0, 0, 64, 56)
 
+[sub_resource type="SystemFont" id="SystemFont_nxew0"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
 [sub_resource type="LabelSettings" id="LabelSettings_th2i3"]
 font = SubResource("SystemFont_nxew0")
 font_size = 32
@@ -64,13 +66,13 @@ font_color = Color(0, 0, 0, 1)
 atlas = ExtResource("3_s007r")
 region = Rect2(40, 48, 56, 56)
 
-[sub_resource type="SystemFont" id="SystemFont_8woq2"]
+[sub_resource type="SystemFont" id="SystemFont_qy87s"]
 font_names = PackedStringArray("Calibri")
 font_weight = 999
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ngm45"]
-font = SubResource("SystemFont_8woq2")
+font = SubResource("SystemFont_qy87s")
 font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -335,12 +337,3 @@ text = "x30"
 label_settings = SubResource("LabelSettings_qtva8")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Sounds" type="Node2D" parent="."]
-
-[node name="PushClick" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("11_2x2y5")
-volume_db = -15.407
-
-[node name="LightningClick" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("12_qt7ha")

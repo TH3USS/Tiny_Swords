@@ -1,0 +1,358 @@
+[gd_scene load_steps=29 format=3 uid="uid://w2jkfeylkh1e"]
+
+[ext_resource type="Script" path="res://UI/Controls.gd" id="1_1nnrv"]
+[ext_resource type="Texture2D" uid="uid://kgqlgq8any4g" path="res://addons/Tiny Swords/UI/Banners/Carved_Regular.png" id="2_o6scw"]
+[ext_resource type="Texture2D" uid="uid://dbjhm5eajayo0" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0357.png" id="3_raqh6"]
+[ext_resource type="Texture2D" uid="uid://edlt8mlv15uh" path="res://addons/mine/mao.png" id="4_0b3ni"]
+[ext_resource type="Texture2D" uid="uid://bquk5yaip751g" path="res://addons/mine/raio.png" id="4_gspjy"]
+[ext_resource type="Texture2D" uid="uid://pyreheh05em4" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0359.png" id="5_b0ew8"]
+[ext_resource type="Texture2D" uid="uid://cw4vmg3pasd3w" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0527.png" id="6_epjd5"]
+[ext_resource type="Texture2D" uid="uid://bl22qvn2qb5ma" path="res://addons/kenney_inputPromptsPixel16×/Tiles/tile_0528.png" id="7_l7t4c"]
+[ext_resource type="Texture2D" uid="uid://b3taipj6qm4py" path="res://addons/Tiny Swords/Resources/Resources/M_Idle_(NoShadow).png" id="8_pqp46"]
+[ext_resource type="Texture2D" uid="uid://disb7k4dj4liv" path="res://addons/Tiny Swords/UI/Buttons/Button_Red_3Slides.png" id="9_xentx"]
+[ext_resource type="Texture2D" uid="uid://ct4jp5enuexe7" path="res://addons/Tiny Swords/UI/Buttons/Button_Red_3Slides_Pressed.png" id="10_wvrhx"]
+[ext_resource type="AudioStream" uid="uid://7v4w5iit5ax2" path="res://addons/soundtrack/system-notification-199277.mp3" id="12_ghii0"]
+[ext_resource type="AudioStream" uid="uid://0xkxgxhnyq5e" path="res://addons/soundtrack/draw-sword1-44724.mp3" id="13_3lyqe"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrf0m"]
+texture = ExtResource("2_o6scw")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5krji"]
+texture = ExtResource("2_o6scw")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="SystemFont" id="SystemFont_r75d3"]
+font_names = PackedStringArray("Calibri")
+font_weight = 800
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0q2n"]
+font = SubResource("SystemFont_r75d3")
+font_size = 18
+
+[sub_resource type="SystemFont" id="SystemFont_8woq2"]
+font_names = PackedStringArray("Calibri")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjw01"]
+font = SubResource("SystemFont_8woq2")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04kvi"]
+atlas = ExtResource("8_pqp46")
+region = Rect2(40, 48, 56, 56)
+
+[sub_resource type="SystemFont" id="SystemFont_nxew0"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7cxfv"]
+font = SubResource("SystemFont_nxew0")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_qfuji"]
+
+[sub_resource type="Theme" id="Theme_iup6h"]
+default_font = SubResource("SystemFont_qfuji")
+default_font_size = 42
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5jh0"]
+texture = ExtResource("9_xentx")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 24.0
+region_rect = Rect2(8, 0, 176, 56)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8ums"]
+texture = ExtResource("10_wvrhx")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lblme"]
+texture = ExtResource("10_wvrhx")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.529067, 0.529067, 0.529067, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0wpl1"]
+texture = ExtResource("10_wvrhx")
+texture_margin_left = 24.0
+texture_margin_top = 16.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.601223, 0.601223, 0.601223, 0.478431)
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nnrv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -230.0
+offset_right = 311.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrf0m")
+
+[node name="Panel2" type="Panel" parent="Panel"]
+self_modulate = Color(0.756863, 0.698039, 0.686275, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -209.0
+offset_right = 289.5
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5krji")
+
+[node name="Label" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 22.0
+offset_right = 561.0
+offset_bottom = 71.0
+text = "Precionando         você ativar o           que pode ser usado com um click
+no local desejado"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label3" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 79.0
+offset_right = 561.0
+offset_bottom = 128.0
+text = "Precionando         você usa o             que afasta os inimigos ao seu redor"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label4" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 120.0
+offset_right = 561.0
+offset_bottom = 169.0
+text = "Para correr é só precionar                     enquanto se move"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label5" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 194.0
+offset_right = 573.0
+offset_bottom = 243.0
+text = "Carnes normais te recuperam 50 de xp"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label6" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 235.0
+offset_right = 572.0
+offset_bottom = 284.0
+text = "Carnes Douradas te recuperam 200 de xp"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label7" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 276.0
+offset_right = 600.0
+offset_bottom = 325.0
+text = "O cronômetro mede o tempo que você sobreviveu"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="Label8" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 315.0
+offset_right = 594.0
+offset_bottom = 364.0
+text = "O medidor marca a quantidade de inimigos que você abateu"
+label_settings = SubResource("LabelSettings_u0q2n")
+
+[node name="TimerLabel" type="Label" parent="Panel/Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -261.0
+offset_top = 270.0
+offset_right = -180.0
+offset_bottom = 304.0
+grow_horizontal = 2
+text = "00:77"
+label_settings = SubResource("LabelSettings_bjw01")
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 14.0
+offset_right = 372.0
+offset_bottom = 270.0
+scale = Vector2(0.118135, 0.118135)
+texture = ExtResource("3_raqh6")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 11.0
+offset_right = 501.0
+offset_bottom = 267.0
+scale = Vector2(0.159981, 0.159981)
+texture = ExtResource("4_gspjy")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 67.0
+offset_right = 487.0
+offset_bottom = 323.0
+scale = Vector2(0.159999, 0.159999)
+texture = ExtResource("4_0b3ni")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 71.0
+offset_right = 373.0
+offset_bottom = 327.0
+scale = Vector2(0.118135, 0.118135)
+texture = ExtResource("5_b0ew8")
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 113.0
+offset_right = 344.0
+offset_bottom = 238.0
+scale = Vector2(0.278135, 0.278135)
+texture = ExtResource("6_epjd5")
+
+[node name="TextureRect6" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 253.999
+offset_top = 113.0
+offset_right = 379.0
+offset_bottom = 238.0
+scale = Vector2(0.278135, 0.278135)
+texture = ExtResource("7_l7t4c")
+
+[node name="TextureRect7" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 180.0
+offset_right = 106.0
+offset_bottom = 253.0
+scale = Vector2(0.52, 0.52)
+texture = SubResource("AtlasTexture_04kvi")
+
+[node name="TextureRect8" type="TextureRect" parent="Panel/Panel2"]
+self_modulate = Color(2.5, 1.5, 0, 1)
+layout_mode = 0
+offset_left = 26.0
+offset_top = 215.0
+offset_right = 124.0
+offset_bottom = 313.0
+scale = Vector2(0.52, 0.52)
+texture = SubResource("AtlasTexture_04kvi")
+
+[node name="Label2" type="Label" parent="Panel/Panel2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 303.0
+offset_right = 124.0
+offset_bottom = 359.0
+scale = Vector2(0.68, 0.68)
+text = "KILLS"
+label_settings = SubResource("LabelSettings_7cxfv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Panel/Panel2"]
+self_modulate = Color(0.756863, 0.698039, 0.686275, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 260.0
+offset_top = -46.0
+offset_right = 269.0
+offset_bottom = 488.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+theme_override_styles/panel = SubResource("StyleBoxTexture_5krji")
+
+[node name="Start" type="Button" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -64.0
+offset_right = 156.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.480002, 0.480002)
+theme = SubResource("Theme_iup6h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g5jh0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f8ums")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lblme")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0wpl1")
+text = "OK "
+
+[node name="Sons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BotaoAudio1" type="AudioStreamPlayer" parent="Sons"]
+stream = ExtResource("12_ghii0")
+
+[node name="BotaoAudio2" type="AudioStreamPlayer" parent="Sons"]
+stream = ExtResource("13_3lyqe")
+
+[connection signal="pressed" from="Panel/Panel2/Start" to="." method="_on_start_pressed"]

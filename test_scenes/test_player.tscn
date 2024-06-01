@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://xnyyn3qleqaa"]
+[gd_scene load_steps=9 format=3 uid="uid://xnyyn3qleqaa"]
 
 [ext_resource type="Script" path="res://test_scenes/test_player.gd" id="1_6fxmq"]
 [ext_resource type="Texture2D" uid="uid://xmnbjjvuolm4" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_hrx06"]
 [ext_resource type="PackedScene" uid="uid://cwu4nsv25jplw" path="res://player/player.tscn" id="2_7ausd"]
 [ext_resource type="PackedScene" uid="uid://c5r5tteudon5t" path="res://misk/lightning.tscn" id="3_cuvlh"]
 [ext_resource type="PackedScene" uid="uid://dakrr2e7tqfv7" path="res://enemies/sheep.tscn" id="5_420f3"]
+[ext_resource type="PackedScene" uid="uid://b1be3gb38ljt8" path="res://enemies/goblin.tscn" id="6_h3u4j"]
+[ext_resource type="PackedScene" uid="uid://cab8hjiwrjt4k" path="res://enemies/pwanR.tscn" id="7_k7plt"]
+[ext_resource type="PackedScene" uid="uid://dduupvjt3mpxg" path="res://enemies/pwanV.tscn" id="8_iwaug"]
 
 [node name="TestPlayer" type="Node2D"]
 script = ExtResource("1_6fxmq")
@@ -102,3 +105,12 @@ health = 100
 
 [node name="Sheep" parent="." instance=ExtResource("5_420f3")]
 position = Vector2(301, 540)
+
+[node name="Goblin" parent="." instance=ExtResource("6_h3u4j")]
+position = Vector2(399, 384)
+
+[node name="Pwan" parent="." instance=ExtResource("7_k7plt")]
+position = Vector2(422, 562)
+
+[node name="Pwan2" parent="." instance=ExtResource("8_iwaug")]
+position = Vector2(192, 309)
